@@ -1,0 +1,16 @@
+{
+  "name": "personal-site",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "build": "contentz build",
+    "start": "serve public -p 3000"
+  },
+  "dependencies": {
+    "contentz": "^2.6.0"
+  },
+  "devDependencies": {
+    "serve": "^10.1.2"
+  }
+}
