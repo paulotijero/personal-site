@@ -1,0 +1,1 @@
+importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.0.0/workbox-sw.js"),workbox&&workbox.routing.registerRoute(o=>location.origin&&o.url.origin&&"/load-sw.js"!==o.url.pathname&&"/sw.js"!==o.url.pathname,new workbox.strategies.NetworkFirst);
