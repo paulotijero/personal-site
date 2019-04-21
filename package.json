@@ -15,6 +15,17 @@
     "write": "contentz write",
     "start": "serve public -p 3000"
   },
+  "keywords": [
+    "contentz",
+    "paulo",
+    "tijero",
+    "texeira",
+    "personal",
+    "blog",
+    "site",
+    "website",
+    "paulotijero"
+  ],
   "dependencies": {
     "contentz": "^3.1.0"
   },
