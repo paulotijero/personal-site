@@ -1,0 +1,96 @@
+---
+title: HTML  Basico 👶🏼
+description: Aprenderemos conceptos básicos de HTML
+date: 2019-05-06T14:18:45.798Z
+lang: es
+published: false
+tags: html, css, basico
+---
+HTML es un lenguaje semántico de marcado para páginas web, que nos permite crear estructuras, este lenguaje semántico es interpretado por todos los navegadores. Por lo tanto, cualquier etiqueta que introduzcas debe aportar un valor semántico, de significado, al contenido.
+...
+
+## Que es una etiqueta y que es un atributo
+
+Una `etiqueta` es un fragmento de código que representar algo en un sitio web, Ahora bien, todas las etiquetas **HTML** se deben abrir (**`<etiqueta>`**) y cerrar (**`</etiqueta>`**) con el siguiente formato:
+
+```html
+<etiqueta>
+  Contenido
+</etiqueta>
+```
+
+Todas las etiquetas tienen atributos, y esta a su vez contienen un valor.
+
+```html
+<etiqueta atributos="valor">
+  Contenido
+</etiqueta>
+```
+
+Muy bien, entonces las `etiquetas` tienen `atributos` y estos `atributos` tienen un `valor` que se aplica a su **Contenido**.
+
+Ahora, las `etiquetas` también pueden contener **etiquetas-padre** y **etiquetas-hijo**; aquí un ejemplo:
+
+```html
+<etiqueta-padre atributos-padre="valor-padre">
+  <etiqueta-hijo atributos-hijo="valor-hijo">
+    Contenido
+  </etiqueta-hijo>
+</etiqueta-padre>
+```
+
+En este ejemplo el **Contenido** se ve afectado por los **`atributos-hijo`**, y este a su vez por los **`atributos-padre`**.
+
+Si en este punto te sientes un poco confundido, no te preocupes, vas por buen camino, esto es algo que iremos aprendiendo con la practica y te prometo que al finalizar el post lo tendrás más claro.
+
+## Conociendo las etiquetas
+
+No son muchas las etiquetas existentes en html, pero listaremos las que mas usaras en tu proceso de aprendizaje.
+
+### `<h1>` hasta `<h6>`
+
+Estas son las etiquetas que se usa para definir encabezados por nivel de importancia y tamaño.
+
+|       Ejemplo        |    Vista Previa    |
+| :------------------: | :----------------: |
+| `<h1>Título h1</h1>` | <h1>Título h1</h1> |
+| `<h2>Título h2</h2>` | <h2>Título h2</h2> |
+| `<h3>Título h3</h3>` | <h3>Título h3</h3> |
+| `<h4>Título h4</h4>` | <h4>Título h4</h4> |
+| `<h5>Título h5</h5>` | <h5>Título h5</h5> |
+| `<h6>Título h6</h6>` | <h6>Título h6</h6> |
+
+Recuerda no hacer uso excesivo de la etiqueta `<h1>` y solo usarlo en títulos principales ya que tu pagina puede ser penalizada y mostrarse al ultimo de los resultados de búsqueda.
+
+### Etiqueta `<p>`
+
+Esta etiqueta es usada para definir un párrafo.
+
+|                Ejemplo                 |             Vista Previa             |
+| :------------------------------------: | :----------------------------------: |
+| `<p>Este es un párrafo de ejemplo</p>` | <p>Este es un párrafo de ejemplo</p> |
+
+### `<b>` | `<strong>`
+
+La etiqueta `<b>` es usada para darle un (tachado)grosor a un texto. valor semántico de importancia.
+
+`<strong>>` funciona de la misma manera, aunque es un tema muy debatible, asi que evitare entrar en detalles.
+
+|                    Ejemplo                     |            Vista previa            |
+| :--------------------------------------------: | :--------------------------------: |
+|        `<b>Esto es una etiqueta b</b>`         |   <b>Esto es una etiqueta b</b>    |
+| `<strong>Esto es una etiqueta strong</strong>` | <b>Esto es una etiqueta strong</b> |
+
+```html
+<!-- para el final -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+  <body></body>
+</html>
+```
