@@ -1,4 +1,0 @@
-User-agent: *
-Disallow: /about/
-Disallow: /404.html
-Sitemap: /sitemap.xml
