@@ -62,3 +62,6 @@ typings/
 
 # Cache local
 .cache/
+
+# Public local
+public/
