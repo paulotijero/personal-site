@@ -36,16 +36,16 @@ published: true
 ```file-tree
 [
   {
-    "name": "talk-with-grut",
+    "name": "talk-with-groot",
     "type": "folder",
     "children": [
       {
         "name": "lib",
         "type": "folder",
-        "children": [{ "name": "talk_with_grut.rb", "type": "file" }]
+        "children": [{ "name": "talk_with_groot.rb", "type": "file" }]
       },
       {
-        "name": "talk_with_grut.gemspec",
+        "name": "talk_with_groot.gemspec",
         "type": "file"
       }
     ]
@@ -55,17 +55,17 @@ published: true
 
 ---
 
-## Add features in the file talk_with_grut.rb
+## Add features in the file talk_with_groot.rb
 
 ```ruby
-class TalkWithGrut
+class TalkWithGroot
 
   def self.es
-    return "Yo soy Grut!"
+    return "Yo soy Groot!"
   end
 
   def self.en
-    return "I am Grut!"
+    return "I am Groot!"
   end
 
 end
@@ -77,17 +77,17 @@ end
 
 ```ruby
 Gem::Specification.new do |s|
-  s.name        = 'talk_with_grut'
+  s.name        = 'talk_with_groot'
   s.version     = '0.0.1'
   s.date        = '2019-05-14'
-  s.summary     = 'He is grut, everyone say hi!.'
-  s.description = 'If you have any problems, it is always recommended that you talk to someone, but I recommend talking to the grut.'
+  s.summary     = 'He is groot, everyone say hi!.'
+  s.description = 'If you have any problems, it is always recommended that you talk to someone, but I recommend talking to the Groot.'
   s.author      = 'Paulo Tijero'
   s.email       = 'paulotijero@gmail.com'
-  s.files       = ['lib/talk_with_grut.rb']
+  s.files       = ['lib/talk_with_groot.rb']
   s.add_development_dependency 'rspec', '~> 3.7'
-  s.metadata    = { "source_code_uri" => "https://github.com/paulotijero/talk-with-grut" }
-  s.homepage    = 'http://rubygems.org/gems/talk_with_grut'
+  s.metadata    = { "source_code_uri" => "https://github.com/paulotijero/talk-with-groot" }
+  s.homepage    = 'http://rubygems.org/gems/talk_with_groot'
   s.license     = 'MIT'
 end
 ```
@@ -113,7 +113,7 @@ task :default => :spec
 ```ruby
 # frozen_string_literal: true
 source "https://rubygems.org"
-git_source(:github) {|talk-with-grut| "https://github.com/paulotijero/talk-with-grut" }
+git_source(:github) {|talk-with-groot| "https://github.com/paulotijero/talk-with-groot" }
 # gem "rails"
 gem 'rspec', :require => 'spec'
 ```
@@ -125,21 +125,21 @@ gem 'rspec', :require => 'spec'
 ```file-tree
 [
   {
-    "name": "talk-with-grut",
+    "name": "talk-with-groot",
     "type": "folder",
     "children": [
       {
         "name": "lib",
         "type": "folder",
-        "children": [{ "name": "talk_with_grut.rb", "type": "file" }]
+        "children": [{ "name": "talk_with_groot.rb", "type": "file" }]
       },
       {
         "name": "spec",
         "type": "folder",
-        "children": [{ "name": "talk_with_grut_spec.rb", "type": "file" }]
+        "children": [{ "name": "talk_with_groot_spec.rb", "type": "file" }]
       },
       {
-        "name": "talk_with_grut.gemspec",
+        "name": "talk_with_groot.gemspec",
         "type": "file"
       },
       {
@@ -160,18 +160,18 @@ gem 'rspec', :require => 'spec'
 ## Now write your tests
 
 ```ruby
-require 'talk_with_grut'
+require 'talk_with_groot'
 
-RSpec.describe 'Hi grut' do
+RSpec.describe 'Hi groot' do
 
-  it 'return ~Yo soy Grut!~ when call the function'  do
-    asnwer = TalkWithGrut.es
-    expect(asnwer).to eq("Yo soy Grut!")
+  it 'return ~Yo soy Groot!~ when call the function'  do
+    asnwer = TalkWithGroot.es
+    expect(asnwer).to eq("Yo soy Groot!")
   end
 
-  it 'return ~I am Grut!~ when call the function'  do
-    asnwer = TalkWithGrut.en
-    expect(asnwer).to eq("I am Grut!")
+  it 'return ~I am Groot!~ when call the function'  do
+    asnwer = TalkWithGroot.en
+    expect(asnwer).to eq("I am Groot!")
   end
 
 end
@@ -182,7 +182,7 @@ end
 ## Building
 
 ```console
-gem build talk_with_grut.gemspec
+gem build talk_with_groot.gemspec
 ```
 
 ---
@@ -190,14 +190,14 @@ gem build talk_with_grut.gemspec
 ## Uploading
 
 ```console
-gem push talk_with_grut-0.0.1.gem
+gem push talk_with_groot-0.0.2.gem
 ```
 
 ---
 
 ## Visit Rubygems and look for our first gem
 
-### [Talk With Grut](http://rubygems.org/gems/talk_with_grut) 🌱
+### [Talk With Groot](http://rubygems.org/gems/talk_with_groot) 🌱
 
 ---
 
