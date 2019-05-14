@@ -1,0 +1,200 @@
+---
+title: How to create gems
+description: We will learn to create our first gem.
+date: 2019-05-14T01:24:24.243Z
+published: true
+---
+
+# How to create gems
+
+---
+
+### Paulo Tijero 👋
+
+> **Software Develper**
+
+> Also **Technical Writer** & **Student** at [Codeable](https://codeable.pe)
+
+---
+
+## What are gems?
+
+---
+
+## How to create my first gem?
+
+---
+
+## The first step and most important! is, search for a name.
+
+### in [Rubygems](https://rubygems.org)
+
+---
+
+## Create the directory & file structure
+
+```file-tree
+[
+  {
+    "name": "talk-with-grut",
+    "type": "folder",
+    "children": [
+      {
+        "name": "lib",
+        "type": "folder",
+        "children": [{ "name": "talk_with_grut.rb", "type": "file" }]
+      },
+      {
+        "name": "talk_with_grut.gemspec",
+        "type": "file"
+      }
+    ]
+  }
+]
+```
+
+---
+
+## Add features in the file talk_with_grut.rb
+
+```ruby
+class TalkWithGrut
+
+  def self.es
+    return "Yo soy Grut!"
+  end
+
+  def self.en
+    return "I am Grut!"
+  end
+
+end
+```
+
+---
+
+## Add features in the file `.gemspec`
+
+```ruby
+Gem::Specification.new do |s|
+  s.name        = 'talk_with_grut'
+  s.version     = '0.0.1'
+  s.date        = '2019-05-14'
+  s.summary     = 'He is grut, everyone say hi!.'
+  s.description = 'If you have any problems, it is always recommended that you talk to someone, but I recommend talking to the grut.'
+  s.author      = 'Paulo Tijero'
+  s.email       = 'paulotijero@gmail.com'
+  s.files       = ['lib/talk_with_grut.rb']
+  s.add_development_dependency 'rspec', '~> 3.7'
+  s.metadata    = { "source_code_uri" => "https://github.com/paulotijero/talk-with-grut" }
+  s.homepage    = 'http://rubygems.org/gems/talk_with_grut'
+  s.license     = 'MIT'
+end
+```
+
+---
+
+## Add testing, but we need to create `Rakefile`
+
+```ruby
+require 'rspec/core/rake_task'
+require 'bundler/gem_tasks'
+
+# Default directory to look in is `/spec`
+RSpec::Core::RakeTask.new(:spec)
+
+task :default => :spec
+```
+
+---
+
+## We sould also add a Gemfile that specifies our Rspec dependency.
+
+```ruby
+# frozen_string_literal: true
+source "https://rubygems.org"
+git_source(:github) {|talk-with-grut| "https://github.com/paulotijero/talk-with-grut" }
+# gem "rails"
+gem 'rspec', :require => 'spec'
+```
+
+---
+
+## Now all we need to do is create a spec folder
+
+```file-tree
+[
+  {
+    "name": "talk-with-grut",
+    "type": "folder",
+    "children": [
+      {
+        "name": "lib",
+        "type": "folder",
+        "children": [{ "name": "talk_with_grut.rb", "type": "file" }]
+      },
+      {
+        "name": "spec",
+        "type": "folder",
+        "children": [{ "name": "talk_with_grut_spec.rb", "type": "file" }]
+      },
+      {
+        "name": "talk_with_grut.gemspec",
+        "type": "file"
+      },
+      {
+        "name": "Gemfile",
+        "type": "file"
+      },
+      {
+        "name": "Rakefile",
+        "type": "file"
+      }
+    ]
+  }
+]
+```
+
+---
+
+## Now write your tests
+
+```ruby
+require 'talk_with_grut'
+
+RSpec.describe 'Hi grut' do
+
+  it 'return ~Yo soy Grut!~ when call the function'  do
+    asnwer = TalkWithGrut.es
+    expect(asnwer).to eq("Yo soy Grut!")
+  end
+
+  it 'return ~I am Grut!~ when call the function'  do
+    asnwer = TalkWithGrut.en
+    expect(asnwer).to eq("I am Grut!")
+  end
+
+end
+```
+
+---
+
+## Building
+
+```console
+gem build talk_with_grut.gemspec
+```
+
+---
+
+## Uploading
+
+```console
+gem push talk_with_grut-0.0.1.gem
+```
+
+---
+
+## Visit Rubygems and look for our first gem.
+
+### [Talk With Grut](http://rubygems.org/gems/talk_with_grut) 🌱
