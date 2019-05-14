@@ -26,11 +26,12 @@ published: true
 ---
 
 ## The first step and most important! is, search for a name.
-###in [Rubygems](https://rubygems.org)
+
+### in [Rubygems](https://rubygems.org)
 
 ---
 
-## Create the directory $ file structure
+## Create the directory & file structure
 
 ```file-tree
 [
@@ -51,9 +52,10 @@ published: true
   }
 ]
 ```
+
 ---
 
-## Add features in the file `.rb`
+## Add features in the file talk_with_grut.rb
 
 ```ruby
 class TalkWithGrut
@@ -103,6 +105,7 @@ RSpec::Core::RakeTask.new(:spec)
 
 task :default => :spec
 ```
+
 ---
 
 ## We sould also add a Gemfile that specifies our Rspec dependency.
@@ -114,3 +117,84 @@ git_source(:github) {|talk-with-grut| "https://github.com/paulotijero/talk-with-
 # gem "rails"
 gem 'rspec', :require => 'spec'
 ```
+
+---
+
+## Now all we need to do is create a spec folder
+
+```file-tree
+[
+  {
+    "name": "talk-with-grut",
+    "type": "folder",
+    "children": [
+      {
+        "name": "lib",
+        "type": "folder",
+        "children": [{ "name": "talk_with_grut.rb", "type": "file" }]
+      },
+      {
+        "name": "spec",
+        "type": "folder",
+        "children": [{ "name": "talk_with_grut_spec.rb", "type": "file" }]
+      },
+      {
+        "name": "talk_with_grut.gemspec",
+        "type": "file"
+      },
+      {
+        "name": "Gemfile",
+        "type": "file"
+      },
+      {
+        "name": "Rakefile",
+        "type": "file"
+      }
+    ]
+  }
+]
+```
+
+---
+
+## Now write your tests
+
+```ruby
+require 'talk_with_grut'
+
+RSpec.describe 'Hi grut' do
+
+  it 'return ~Yo soy Grut!~ when call the function'  do
+    asnwer = TalkWithGrut.es
+    expect(asnwer).to eq("Yo soy Grut!")
+  end
+
+  it 'return ~I am Grut!~ when call the function'  do
+    asnwer = TalkWithGrut.en
+    expect(asnwer).to eq("I am Grut!")
+  end
+
+end
+```
+
+---
+
+## Building
+
+```console
+gem build talk_with_grut.gemspec
+```
+
+---
+
+## Uploading
+
+```console
+gem push talk_with_grut-0.0.1.gem
+```
+
+---
+
+## Visit Rubygems and look for our first gem.
+
+### [Talk With Grut](http://rubygems.org/gems/talk_with_grut) 🌱
