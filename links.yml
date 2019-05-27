@@ -17,20 +17,24 @@
   date: 2019-05-18T17:23:13.803Z
 - url: https://flexboxfroggy.com/#es
   title: Flexbox Froggy 🐸
-  comment: Learn CSS Flexbox with Froggy
+  comment: Learn CSS Flexbox with froggy
   date: 2019-05-07T15:34:29.483Z
 - url: https://cssgridgarden.com/#es
   title: Grid Garden 🥕
-  comment: Learn CSS Grid in your Garden
+  comment: Learn CSS Grid in your garden
   date: 2019-05-07T15:35:48.015Z
+- url: https://mdxjs.com/
+  title: MDX 📔
+  comment: JSX in Markdown for ambitious projects
+  date: 2019-04-24T15:33:37.387Z
 - url: https://www.makeareadme.com/
   title: Make a Readme 📑
   comment: How do you create a readme? This is the answer!
   date: 2019-04-23T15:33:37.387Z
-- url: https://mdxjs.com/
-  title: MDX 📔
-  comment: JSX in Markdown for ambitious projects
-  date: 2019-04-22T15:33:37.387Z
+- url: https://commonmark.org/help/tutorial/
+  title: Markdown Tutorial 🤓
+  comment: Learn the Markdown language with gamification
+  date: 2019-04-22T15:53:39.273Z
 - url: https://joedicastro.com/pages/markdown.html
   title: Markdown & Pygments Lexers Cheat Sheet 📕
   comment: This is an amazing guide of markdown
