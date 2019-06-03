@@ -3,9 +3,11 @@ title: HTML  Basico 👶🏼
 description: Aprenderemos conceptos básicos de HTML
 date: 2019-05-06T14:18:45.798Z
 lang: es
+toc: true
 published: false
 tags: html, css, basico
 ---
+
 HTML es un lenguaje semántico de marcado para páginas web, que nos permite crear estructuras, este lenguaje semántico es interpretado por todos los navegadores. Por lo tanto, cualquier etiqueta que introduzcas debe aportar un valor semántico, de significado, al contenido.
 ...
 
@@ -45,15 +47,15 @@ Si en este punto te sientes un poco confundido, no te preocupes, vas por buen ca
 
 ## Conociendo las etiquetas
 
-No son muchas las etiquetas existentes en html, pero listaremos las que mas usaras en tu proceso de aprendizaje.
+Las etiquetas existentes en html son muchas, pero listaremos las que mas usaras en tu proceso de aprendizaje.
 
-### `<h1>` hasta `<h6>`
+### **h1** hasta **h6**
 
 Estas son las etiquetas que se usa para definir encabezados por nivel de importancia y tamaño.
 
 |       Ejemplo        |    Vista Previa    |
 | :------------------: | :----------------: |
-| `<h1>Título h1</h1>` | <h1>Título h1</h1> |
+| `<h1>Título h1</h1>` | <h1>Titulo h1</h1> |
 | `<h2>Título h2</h2>` | <h2>Título h2</h2> |
 | `<h3>Título h3</h3>` | <h3>Título h3</h3> |
 | `<h4>Título h4</h4>` | <h4>Título h4</h4> |
@@ -62,7 +64,7 @@ Estas son las etiquetas que se usa para definir encabezados por nivel de importa
 
 Recuerda no hacer uso excesivo de la etiqueta `<h1>` y solo usarlo en títulos principales ya que tu pagina puede ser penalizada y mostrarse al ultimo de los resultados de búsqueda.
 
-### Etiqueta `<p>`
+### Etiqueta **p**
 
 Esta etiqueta es usada para definir un párrafo.
 
@@ -70,16 +72,21 @@ Esta etiqueta es usada para definir un párrafo.
 | :------------------------------------: | :----------------------------------: |
 | `<p>Este es un párrafo de ejemplo</p>` | <p>Este es un párrafo de ejemplo</p> |
 
-### `<b>` | `<strong>`
+### **strong**
 
-La etiqueta `<b>` es usada para darle un (tachado)grosor a un texto. valor semántico de importancia.
+La etiqueta `<strong>>` es usada para dar ~~grosor~~ mas relevancia al hijo que contiene respecto a otras partes del documento, aunque de la impresion que esta parte del texto se pone en **negrita** no recomiendo su uso para ese fin, ya que recuerden que `HTML` es un lenguaje semantico, asi que dejaremos los estilos para el `CSS`
 
-`<strong>>` funciona de la misma manera, aunque es un tema muy debatible, asi que evitare entrar en detalles.
+|                    Ejemplo                     |                 Vista previa                 |
+| :--------------------------------------------: | :------------------------------------------: |
+| `<strong>Esto es una etiqueta strong</strong>` | <strong>Esto es una etiqueta strong</strong> |
 
-|                    Ejemplo                     |            Vista previa            |
-| :--------------------------------------------: | :--------------------------------: |
-|        `<b>Esto es una etiqueta b</b>`         |   <b>Esto es una etiqueta b</b>    |
-| `<strong>Esto es una etiqueta strong</strong>` | <b>Esto es una etiqueta strong</b> |
+### **b**
+
+La etiqueta `<b>` es para poner en **negrita** de manera semantica, solo debe ser usada como ultimo recurso cuando ninguna otra etiqueta es mas apropiada, no olvidemos que `HMTL` en un lenguaje `semantico`!
+
+|             Ejemplo             |         Vista previa          |
+| :-----------------------------: | :---------------------------: |
+| `<b>Esto es una etiqueta b</b>` | <b>Esto es una etiqueta b</b> |
 
 ```html
 <!-- para el final -->
