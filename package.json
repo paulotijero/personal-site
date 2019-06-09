@@ -10,6 +10,7 @@
     "dev": "watch \"yarn build\" articles pages",
     "build.dev": "node ../contentz/cli.js build",
     "build": "contentz build",
+    "prebuild": "yarn install",
     "social:dev": "node ../contentz/cli.js social",
     "social": "contentz social",
     "write": "contentz write",
