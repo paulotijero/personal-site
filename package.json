@@ -9,7 +9,7 @@
   "scripts": {
     "dev": "watch \"yarn build\" articles pages",
     "build.dev": "node ../contentz/cli.js build",
-    "build": "contentz build",
+    "build": "contentz build && mkdir public/otherslides && cp otherslides/sql-history-of-creation.html public/slides/sql-history-of-creation.html",
     "prebuild": "yarn install",
     "social:dev": "node ../contentz/cli.js social",
     "social": "contentz social",
