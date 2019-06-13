@@ -12,6 +12,8 @@ social:
   meetup: 273278704
 icon: /static/tijerotexeira.png
 navigation:
+  - name: Papers
+    path: /papers/
   - name: About me
     path: /about/
 incremental: false
