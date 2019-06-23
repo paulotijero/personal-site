@@ -1,0 +1,36 @@
+---
+title: Anatomia del HTML
+description: Veremos a detalle algunos de los componentes HTML
+date: 2019-06-23T00:30:35.339Z
+lang: es
+toc: true
+published: true
+tags: html
+---
+
+HTML es un lenguaje semántico de marcado para páginas web, que nos permite crear estructuras, este lenguaje semántico es interpretado por todos los navegadores. Por lo tanto, cualquier etiqueta que introduzcas debe aportar un valor semántico, de significado, al contenido.
+
+## Anatomía del HTML
+
+Aquí veremos las partes que componen al cuerpo del `html`, mantener esta estructura es importante ya que sirve para decirle al navegador que lo que esta viendo es una pagina web.
+
+![](/static/img/articles/anatomia-del-html/body-html.png)
+
+### DOCTYPE
+
+![](/static/img/articles/anatomia-del-html/doctype.png)
+
+Doctype o **"Declaración del tipo de documento"** no es una etiqueta del `html` esta es una instrucción para el navegador, sobre que version de `html` esta mostrando, para nuestro ejemplo estamos usando la version 5.
+Puedes revisar este [enlace](https://rolandocaldas.com/html5/doctype-en-html5) para ver como lo hacían en la version 4.01. Antes era mucho, mucho mas complejo la cosa.
+
+### html
+
+![](/static/img/articles/anatomia-del-html/html.png)
+
+La etiqueta `html` es el contenedor de todos los demás elementos que conforman el cuerpo del `html` esta a su vez contiene un atributo `lang` para establecer el idioma del documento.
+
+### head
+
+```html
+<head></head>
+```
