@@ -1,37 +1,37 @@
 ---
-title: How to create gems
+title: How to create a gem and not die trying
 description: We will learn to create our first gem.
 date: 2019-05-14T01:24:24.243Z
 published: true
 ---
 
-# How to create gems
+# How to create a gem and not die trying
 
 ---
 
-### Paulo Tijero 👋
+## Paulo Tijero 👋
 
-> **Software Develper**
+> **Fullstack Developer,**
 
-> Also **Technical Writer** & **Student** at [Codeable](https://codeable.pe)
-
----
-
-## What are gems?
+> & **Student** at [Codeable](https://codeable.pe)
 
 ---
 
-## How to create my first gem?
+# What are gems?
 
 ---
 
-## The first step and most important! is, search for a name.
-
-### in [Rubygems](https://rubygems.org)
+# How to create my first gem?
 
 ---
 
-## Create the directory & file structure
+# The first step and most important! is, search for a name.
+
+## in [Rubygems](https://rubygems.org)
+
+---
+
+# Create the directory & file structure
 
 ```file-tree
 [
@@ -55,72 +55,39 @@ published: true
 
 ---
 
-## Add features in the file talk_with_groot.rb
-
-```ruby
-class TalkWithGroot
-
-  def self.es
-    return "Yo soy Groot!"
-  end
-
-  def self.en
-    return "I am Groot!"
-  end
-
-end
-```
+# Add features in the file talk_with_groot.rb
 
 ---
 
-## Add features in the file `.gemspec`
-
-```ruby
-Gem::Specification.new do |s|
-  s.name        = 'talk_with_groot'
-  s.version     = '0.0.1'
-  s.date        = '2019-05-14'
-  s.summary     = 'He is groot, everyone say hi!.'
-  s.description = 'If you have any problems, it is always recommended that you talk to someone, but I recommend talking to the Groot.'
-  s.author      = 'Paulo Tijero'
-  s.email       = 'paulotijero@gmail.com'
-  s.files       = ['lib/talk_with_groot.rb']
-  s.add_development_dependency 'rspec', '~> 3.7'
-  s.metadata    = { "source_code_uri" => "https://github.com/paulotijero/talk-with-groot" }
-  s.homepage    = 'http://rubygems.org/gems/talk_with_groot'
-  s.license     = 'MIT'
-end
-```
+![](/static/img/slide/how-to-create-gems/talk-with-groot.png)
 
 ---
 
-## Add testing, but we need to create `Rakefile`
-
-```ruby
-require 'rspec/core/rake_task'
-require 'bundler/gem_tasks'
-
-# Default directory to look in is `/spec`
-RSpec::Core::RakeTask.new(:spec)
-
-task :default => :spec
-```
+# Add features in the file `.gemspec`
 
 ---
 
-## We sould also add a Gemfile that specifies our Rspec dependency.
-
-```ruby
-# frozen_string_literal: true
-source "https://rubygems.org"
-git_source(:github) {|talk-with-groot| "https://github.com/paulotijero/talk-with-groot" }
-# gem "rails"
-gem 'rspec', :require => 'spec'
-```
+![](/static/img/slide/how-to-create-gems/gemspec.png)
 
 ---
 
-## Now all we need to do is create a spec folder
+# Add testing, but we need to create `Rakefile`
+
+---
+
+![](/static/img/slide/how-to-create-gems/rakefile.png)
+
+---
+
+# We sould also add a Gemfile that specifies our Rspec dependency.
+
+---
+
+![](/static/img/slide/how-to-create-gems/dependency.png)
+
+---
+
+# Now all we need to do is create a spec folder
 
 ```file-tree
 [
@@ -157,48 +124,44 @@ gem 'rspec', :require => 'spec'
 
 ---
 
-## Now write your tests
-
-```ruby
-require 'talk_with_groot'
-
-RSpec.describe 'Hi groot' do
-
-  it 'return ~Yo soy Groot!~ when call the function'  do
-    asnwer = TalkWithGroot.es
-    expect(asnwer).to eq("Yo soy Groot!")
-  end
-
-  it 'return ~I am Groot!~ when call the function'  do
-    asnwer = TalkWithGroot.en
-    expect(asnwer).to eq("I am Groot!")
-  end
-
-end
-```
+# Now write your tests
 
 ---
 
-## Building
-
-```console
-gem build talk_with_groot.gemspec
-```
+![](/static/img/slide/how-to-create-gems/tests.png)
 
 ---
 
-## Uploading
-
-```console
-gem push talk_with_groot-0.0.2.gem
-```
+# Building
 
 ---
 
-## Visit Rubygems and look for our first gem
-
-### [Talk With Groot](http://rubygems.org/gems/talk_with_groot) 🌱
+![](/static/img/slide/how-to-create-gems/building.png)
 
 ---
 
-## Any Question?
+# Uploading
+
+---
+
+![](/static/img/slide/how-to-create-gems/uploading.png)
+
+---
+
+# Visit Rubygems and look for our first gem
+
+## [Talk With Groot](http://rubygems.org/gems/talk_with_groot) 🌱
+
+---
+
+# Any Question?
+
+---
+
+# THANKS!
+
+> Follow me **[@paulotijero](https://twitter.com/paulotijero)**
+
+> Check my repositories on [GitHub](https://github.com/paulotijero)
+
+> And tell your friends that you saw me 👀
