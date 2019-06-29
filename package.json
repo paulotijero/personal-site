@@ -9,8 +9,8 @@
   "scripts": {
     "dev": "watch \"yarn build\" articles pages",
     "build.dev": "node ../contentz/cli.js build",
-    "build": "contentz build && mkdir public/otherslides && cp otherslides/sql-history-of-creation.html public/otherslides/sql-history-of-creation.html",
-    "prebuild": "yarn install",
+    "build": "contentz build",
+    "prebuild": "rm -rf public && yarn install",
     "social:dev": "node ../contentz/cli.js social",
     "social": "contentz social",
     "write": "contentz write",
@@ -28,9 +28,10 @@
     "paulotijero"
   ],
   "dependencies": {
-    "contentz": "^3.13.3"
+    "@contentz/build": "^1.0.2",
+    "contentz": "^3.14.1"
   },
   "devDependencies": {
-    "serve": "^11.0.1"
+    "serve": "^11.0.2"
   }
 }
