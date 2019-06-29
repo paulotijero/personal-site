@@ -1,6 +1,6 @@
 ---
 title: Paulo Tijero
-description: Software Engineer, Fullstack Developer, Technical Writer, and Funny Speaker
+description: Fullstack Software Engineer, Technical Writer, and Funny Speaker
 domain: https://paulotijero.dev
 language: en
 repository: https://github.com/paulotijero/personal-site/
@@ -12,7 +12,7 @@ social:
   meetup: 273278704
 icon: /static/tijerotexeira.png
 navigation:
-  - name: About me
+  - name: Bio
     path: /about/
 incremental: false
 analytics: UA-138758078-1
