@@ -1,53 +1,43 @@
 ---
+- url: https://overreacted.io/a-complete-guide-to-useeffect/
+  title: A complete guide to React useEffect ⚛️
+  comment: useEffect from zero to hero
 - url: https://dev.to/camerenisonfire/10-intriguing-public-rest-apis-for-your-next-project-2gbd
-  title: 10 Intriguing Public REST APIs For Your Next Project 🏗️
+  title: 10 Intriguing Public REST APIs For Your Next Project 🚧
   comment: The best place to start is by simply getting and displaying data
-  date: 2019-09-01T23:02:55.862Z
 - url: https://talent.works/2018/11/27/the-science-of-the-job-search-part-vii-you-only-need-50-of-job-requirements/
   title: The science of the job search 🧪
   comment: You only need 50% of job requirements
-  date: 2019-08-16T19:41:02.419Z
 - url: https://egghead.io/courses/how-to-contribute-to-an-open-source-project-on-github
   title: How to Contribute to an Open Source Project on GitHub 😍
   comment: Course how to contribute to open source
-  date: 2019-06-04T15:43:44.701Z
 - url: http://orta.io/vscode-themes/
   title: Visual Studio Code Themes 🎨
   comment: This is the complete list of themes
-  date: 2019-05-27T03:17:24.294Z
 - url: https://platzi.com/blog/flujo-de-trabajo-y-comandos-oscuros-de-git/
   title: Dark Git Commants 🖤
   comment: Workflow for save your life
-  date: 2019-05-22T04:10:25.081Z
 - url: https://dev.to/perborgen/learn-react-in-5-minutes-3bnd
   title: Learn React in 5 Minutes 🤯
   comment: A quick React tutorial to get you started with the popular JS
-  date: 2019-05-19T04:16:00.843Z
 - url: https://www.kalzumeus.com/2012/01/23/salary-negotiation/
   title: Salary Negotiation 💸
   comment: Make More Money, Be More Valued
-  date: 2019-05-18T17:23:13.803Z
 - url: https://flexboxfroggy.com/#es
   title: Flexbox Froggy 🐸
   comment: Learn CSS Flexbox with froggy
-  date: 2019-05-07T15:34:29.483Z
 - url: https://cssgridgarden.com/#es
   title: Grid Garden 🥕
   comment: Learn CSS Grid in your garden
-  date: 2019-05-07T15:35:48.015Z
 - url: https://mdxjs.com/
   title: MDX 📔
   comment: JSX in Markdown for ambitious projects
-  date: 2019-04-24T15:33:37.387Z
 - url: https://www.makeareadme.com/
   title: Make a Readme 📑
   comment: How do you create a readme? This is the answer!
-  date: 2019-04-23T15:33:37.387Z
 - url: https://commonmark.org/help/tutorial/
   title: Markdown Tutorial 🤓
   comment: Learn the Markdown language with gamification
-  date: 2019-04-22T15:53:39.273Z
 - url: https://joedicastro.com/pages/markdown.html
   title: Markdown & Pygments Lexers Cheat Sheet 📕
   comment: This is an amazing guide of markdown
-  date: 2019-04-21T15:33:37.387Z
