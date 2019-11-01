@@ -1,4 +1,7 @@
 ---
+- url: https://thoughtbot.com/blog/sandi-metz-rules-for-developers
+  title: Ruby & Rails Developer Rules 💎
+  comment: Sandi Metz introduce her rules for developers
 - url: https://overreacted.io/a-complete-guide-to-useeffect/
   title: A complete guide to React useEffect ⚛️
   comment: useEffect from zero to hero
