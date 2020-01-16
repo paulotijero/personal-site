@@ -1,0 +1,67 @@
+---
+title: ¿Qué es Redux y cómo funciona? ⚙️
+description: Graficando conceptos
+date: 2020-01-16T06:13:24.870Z
+lang: es
+toc: true
+published: true
+tags: html
+---
+
+Es posible que estés tratando de resolver problemas de Redux mientras estás aprendiendo React, esto lo explica mejor [Kitze](https://kitze.io/) en el primer minuto de este [video](https://www.youtube.com/watch?v=fhRg9ZuG5mE&feature=youtu.be), donde suelta algunos tips para quienes recién nos iniciamos en el mundo de React.
+
+## ¿Qué es Redux?
+
+Redux es una librería de JavaScript que te permite manejar el estado de una aplicación. También podriamos decir que es un **patrón de arquitectura** de datos que permite manejar estados. Aunque comúnmente está asociada a React, Redux es un libreria JavaScript agnóstica, por lo que es muy probable que te topes con Redux en proyectos Angular.
+
+## ¿Por qué usar Redux?
+
+Cuando creamos aplicaciones en React, éstas se organizan como una serie de componentes anidados, su naturaleza es funcional. En otras palabras reciben información a través de sus argumentos (props) y pasan la información a través de sus valores de retorno y a esto se le llama: _**one-way binding**_, los datos sólo se transmiten de los componentes a sus hijos:
+
+![React Component tree](/static/img/articles/que-es-redux-y-como-funciona/react-component-tree-1.jpeg)
+
+Veamos un ejemplo de cómo se comportaría React con y sin Redux.
+
+## React sin Redux
+
+Entonces, imaginemos que en nuestro componente D tenemos un input que almacena cierta información en un estado. Esta información estará disponible para todo el componente D y sus hijos, ¿pero qué pasaria si necesitamos que esa información también esté presente en el componente E?
+
+![React Component tree](/static/img/articles/que-es-redux-y-como-funciona/react-component-tree-2.jpeg)
+
+Una solución sería declarar el estado en el componente B (padre), de esa forma tendremos acceso a la información desde el componente D y E (hijos):
+
+![React Component tree](/static/img/articles/que-es-redux-y-como-funciona/react-component-tree-3.jpeg)
+
+Siguiendo la misma lógica, ¿qué pasaría si necesito tener acceso a esa información en toda mi aplicación? Bueno, entonces declaro el estado en el padre de todos los componentes:
+
+![React Component tree](/static/img/articles/que-es-redux-y-como-funciona/react-component-tree-4.jpeg)
+
+Cuando estés aprendiendo React, hacerlo así es una buena forma de entender cómo funcionan los props y los componentes, pero no es una práctica que quieras repetir para proyectos grandes, porque esto trae consigo otros problemas cómo el [Prop Drilling](https://kentcdodds.com/blog/prop-drilling).
+
+## React con Redux
+
+Entonces, necesitamos tener toda esa información en un solo lugar, para que pueda estar disponible en todos nuestros componentes, algo como nuestra única fuente de la verdad:
+
+![React Component tree with Redux](/static/img/articles/que-es-redux-y-como-funciona/react-component-tree-with-redux.png)
+
+Teniendo toda esa información en nuestros estados Redux todos nuestros componentes tendran acceso a la misma información en todo momento.
+
+## Patrón de arquitectura Redux
+
+Más arriba mencionamos que Redux es un patrón de arquitectura y vimos a Redux como una caja azul que almacena los estados. Veamos ahora qué tenemos dentro de nuestra caja azul y cómo funciona:
+
+![Redux flow chart](/static/img/articles/que-es-redux-y-como-funciona/redux-flow-chart.png)
+
+1. Tenemos un `Component` que va a emitir un `Action`, que pueden ser llamadas por algún evento: un click, por ejemplo.
+
+2. El `Action` pasa al `Store` que es donde se guardan todos los estados.
+
+3. El `Store` comunica al `Reducer` el estado actual y cual fue el `Action` que se ejecutó.
+
+4. Luego, el `Reducer` retorna un nuevo estado modificado por la acción que se acaba de ejecutar.
+
+5. El estado se actualiza en el `Store`.
+
+6. Y el `Store` devuelve el nuevo estado modificado al componente.
+
+Puede que estés ante una ensalada de conceptos nuevos, y puede resultar confuso, te lo digo por experiencia. Mi recomendación es que te tomes el tiempo necesario para entender cual es el flujo de Redux, en un siguiente post veremos el código detras de nuestra arquitectura Redux en un pet project.
