@@ -1,4 +1,10 @@
 ---
+- url: https://www.dataart.com.ar/news/junior-middle-senior-lead-what-s-the-difference/
+  title: Junior, Middle, Senior, Lead - what's the difference? 🤔
+  comment: Alexander Demura shares his views about to "seniority" of the staff and the qualities necessary for a particular role
+- url: https://thoughtbot.com/blog/sandi-metz-rules-for-developers
+  title: Ruby & Rails Developer Rules 💎
+  comment: Sandi Metz introduce her rules for developers
 - url: https://overreacted.io/a-complete-guide-to-useeffect/
   title: A complete guide to React useEffect ⚛️
   comment: useEffect from zero to hero
