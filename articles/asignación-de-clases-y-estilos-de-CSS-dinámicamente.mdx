@@ -1,0 +1,117 @@
+---
+title: Asignación de clases y estilos de CSS dinámicamente 🎨
+description: Daremos un paseo por algunas formas que permiten agregar o quitar clases y estilos de CSS dinámicamente utilizando React.js
+date: 2020-01-16T05:43:18.039Z
+lang: es
+published: true
+tags: react
+---
+
+## Usando operadores ternarios
+
+La estructura de los operadores ternarios se ve así:
+
+```
+condition ? is_true : is_false
+```
+
+Tenemos una condición y los valores que retornará si se cumple: de ser verdadera, será `is_true`, y si es falsa, `is_false`.
+
+Entonces asignar clases usando operadores ternarios quedaría así:
+
+```
+function WithTernaryOperator(){
+ const condition_1 = true;
+ const condition_2 = false;
+return (
+ <div className={`class_0
+  ${condition_1 ? 'class_1' : 'class_2'}
+  ${condition_2 ? 'class_3' : ''}`} /> // => "class_0 class_1"
+
+ <div className={`class_0
+  ${condition_2 ? 'class_1' : 'class_2'}
+  ${condition_1 ? 'class_3' : ''}`}/> // => "class_0 class_2 class_3"
+ );
+}
+```
+
+## Usando el patrón compact(arrayOfClassNames).join(' ')
+
+Para usarlo necesitaremos instalar el módulo npm [lodash](https://www.npmjs.com/package/lodash). Luego importar `lodash/compact`.
+
+Lo que hace `compact` es, como su nombre lo indica, compactar el contenido de nuestro array, evitando los `false | null | undefined | '' | 0` , para muestra un botón:
+
+```
+_.compact([0,'uno',false,2,'','tres',null,4,' ',undefined,5]);
+// => ["uno",2,"tres",4," ",5]
+```
+
+¿Notan que al costado del número cuatro también pasé un string aparentemente vacío? En realidad no lo está, ya que contiene el [caracter ascii 32](https://elcodigoascii.com.ar/codigos-ascii/espacio-codigo-ascii-32.html).
+
+Finalmente usamos `.join(' ')` para unir nuestro array en una sola cadena string, separados por un espacio. Siguiendo el ejemplo anterior queda así:
+
+```
+["uno",2,"tres",4,5].join(' ');
+// => "uno 2 tres 4 5"
+```
+
+Ahora que ya tenemos claro como trabajan juntos `lodash/compact` y `join(' ')` para salvarnos el día, reforcemos lo aprendido con un ejemplo de asignación de clases:
+
+```
+import compact from 'lodash/compact';
+
+function WithCompactJoin(){
+ const condition_1 = true;
+ const condition_2 = false;
+
+const classDiv_1 = compact([
+  'class_0',
+  condition_1 ? 'class_1' : 'class_2',
+  condition_1 ? 'class_3' : null,
+ ]).joint(' '); // => "class_0 class_1"
+
+const classDiv_2 = compact([
+  'class_0',
+  condition_2 ? 'class_1' : 'class_2',
+  condition_1 ? 'class_3' : null,
+ ]).joint(' '); // => "class_0 class_2 class_3"
+
+ render(
+   <>
+     <div className={classDiv_1} />
+     <div className={classDiv_2} />
+   </>
+ );
+}
+```
+
+## Usando classnames
+
+`classNames` es otro módulo npm muy útil para unir condicionalmente clases CSS. Para tenerlo corriendo en tu proyecto revisa su guía de instalación. Luego de tenerlo instalado tenemos que importalo en nuestro archivo. Funciona muy parecido al patrón `compact(arrayOfClassNames).join(' ')` que mencionamos antes.
+
+Usar `classNames` en nuestro proyecto agregará mucho valor semántico. Veamos un par de ejemplos para probar este punto.
+
+```
+classNames('foo', 'bar'); // => 'foo bar'
+classNames('foo', { foo-bar: false, bar: true }); // => 'foo bar'
+classNames(null, false, 'bar', undefined, 0, 1, { foo: null }, ''); // => 'bar 1'
+```
+
+En la línea 2 vemos que es muy intuitivo saber qué clase no se agregará, porque tenemos el class key `foo-bar` que contiene un valor `false`. Sucede lo mismo si contiene los valores `null | undefined | false | '' | 0`.
+
+Ahora siguiendo nuestro ejemplo de asignación de clases, nos quedaría así:
+
+```
+import classNames from 'classnames';
+
+function WithClassNames(){
+ const condition_1 = true;
+ const condition_2 = false;
+
+return (
+   <>
+    <div className={classNames(`class_0`,{'class_1': condition_1, ,'class_2': null, 'class_3': condition_2})} /> // => "class_0 class_1"
+    <div className={classNames(`class_0`,{'class_1': condition_2, ,'class_2': null, 'class_3': condition_1})} /> // => "class_0 class_2 class_3"
+   </>
+}
+```
