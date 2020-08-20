@@ -1,4 +1,7 @@
 ---
+- url: https://launchschool.com/books
+  title: "Launch School: Open book shelf 📖"
+  comment: The books take a very beginner friendly approach, and are suitable for any level
 - url: https://www.executeprogram.com/courses
   title: "Execute Program: Learn javascript topics 💊"
   comment: TypeScript, Regular Expressions, Modern JavaScript, JavaScript Concurrency, and more!
