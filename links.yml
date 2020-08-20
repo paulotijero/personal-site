@@ -1,6 +1,9 @@
 ---
+- url: https://www.executeprogram.com/courses
+  title: "Execute Program: Learn javascript topics 💊"
+  comment: TypeScript, Regular Expressions, Modern JavaScript, JavaScript Concurrency, and more!
 - url: https://www.freecodecamp.org/news/how-to-think-like-a-programmer-lessons-in-problem-solving-d1d8bf1de7d2/
-  title: How to think like a programmer — lessons in problem solving 🧑‍💻
+  title: How to think like a programmer 🧑‍💻
   comment: After reading this article you will like to get in trouble.
 - url: https://rauchg.com/2014/7-principles-of-rich-web-applications/
   title: 7 Principles of Rich Web Applications 🔬
