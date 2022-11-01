@@ -1,0 +1,28 @@
+---
+title: Instalando libq-dev
+description: Solucionando un error de PostgreSQL al intentar levantar proyectos en rails
+date: 2022-11-01T16:12:26.982Z
+lang: es
+toc: true
+published: true
+tags: ruby, libq-dev, postgresql, pg
+---
+
+Cuando intente ejecutar mis proyectos en `rails`, estos usan una gema llamada `pg` para conectar con la base de datos de `PostgreSQL`, el mensaje de ayuda nos dice que estemos seguros de estar usando la versión correcta de la gema, y cuando especificamos la versión `1.2.3` , el error persiste.
+
+```bash
+// Error de consola.
+
+An error occurred while installing pg (1.2.3), and bundler cannot continue.
+Make sure that `gem install pg -v '1.2.3' --source 'https://rubygems.org/'` succeeds before bundling.
+```
+
+Buscando en internet me tope con una solución que sí funcionó para mí, y solo me faltaba instalar una librería en mi [entorno de desarrollo](/articles/mi-setup-desarrollo-wsl-ubuntu)
+
+```bash
+$ sudo apt install libpq-dev
+```
+
+---
+
+Créditos al autor ⇒ [enlace al StackOverflow](https://stackoverflow.com/a/56308158/7915114)

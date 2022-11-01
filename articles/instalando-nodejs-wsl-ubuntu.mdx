@@ -1,0 +1,91 @@
+---
+title: Instalando & configurando NodeJS en WSL Ubuntu
+description: Parte 6 de una serie de artículos que describen mi setup en WSL Ubuntu
+date: 2022-10-27T03:46:14.859Z
+lang: es
+toc: true
+published: true
+tags: setup, wsl, nodejs, ubuntu
+---
+
+> _Este post es parte de una serie de artículos que describen paso a paso mi setup personal, puedes ver la lista completa [aquí](/articles/mi-setup-desarrollo-wsl-ubuntu)_
+
+Vale ahora nos toca instalar `NodeJS`, usaremos la misma estrategia que usamos [cuando instalamos `ruby`](/articles/instalando-ruby-wsl-ubuntu), usaremos un manejador de versiones para ` node`, nosotros usaremos [`nvm` (Node Version Manager)](https://github.com/nvm-sh/nvm)
+
+Entonces, para instalar `nvm` según su documentación, tenemos que ejecutar este comando:
+
+```bash
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
+```
+
+Este proceso de instalación no suele demorar mucho, una vez termine el proceso de instalación, para revisar que esta instalado correctamente, tenemos que preguntar por la versión, pero antes asegúrate de reiniciar tu terminal (técnica milenaria)
+
+```bash
+$ nvm --version
+
+0.39.1
+```
+
+Con nuestro manejador de versiones para `node` funcionando, vamos a instalar la versión de `node` que queremos usar, que en nuestro caso será la última versión con `LTS` .
+
+Usualmente tendríamos que especificar un número de versión, pero como queremos instalar última versión de `node lts` usaremos solo el flag `--lts` para la instalación directa de la versión más actual con `LTS`.
+
+```bash
+$ nvm install --lts
+
+Installing latest LTS version.
+Downloading and installing node v16.17.0...
+Downloading https://nodejs.org/dist/v16.17.0/node-v16.17.0-linux-x64.tar.xz...
+###################################################### 100.0%
+Computing checksum with sha256sum
+Checksums matched!
+Now using node v16.17.0 (npm v8.15.0)
+Creating default alias: default -> lts/* (-> v16.17.0)
+```
+
+Genial, ya lo tenemos instalado… ahora, para configurar esta versión como la versión global de nuestro sistema, tendremos que usar el siguiente comando especificándole la versión, en nuestro caso seguiremos usando el flag `--lts`.
+
+```bash
+$ nvm use --lts
+
+Now using node v16.17.0 (npm v8.15.0)
+```
+
+Y listo! para comprobar si verdaderamente lo tenemos configurado he instalado, tenemos que preguntar por su versión, siempre reiniciando la terminal (técnica milenaria).
+
+```bash
+$ node --version
+
+v16.17.0
+```
+
+Una vez que la comprobación sea exitosa, podremos ejecutar la consola de `node`, para eso solo tendremos que escribir `node` en el terminal:
+
+```bash
+$ node
+
+Welcome to Node.js v16.17.0.
+Type ".
+>
+```
+
+Listo! con esto completamos la instalación de `Node` en `WSL - Ubuntu` 🎉
+
+---
+
+<div css={{ display: "flex", justifyContent: "space-between" }}>
+  <a
+    href="/articles/instalando-ruby-wsl-ubuntu"
+    target="_self"
+    css={{ display: "block", color: "#004BCC", textDecoration: "underline" }}
+  >
+    👈 Instalando Ruby en WSL Ubuntu
+  </a>
+  <a
+    href="/articles/instalando-yarn-wsl-ubuntu"
+    target="_self"
+    css={{ display: "block", color: "#004BCC", textDecoration: "underline" }}
+  >
+    Instalando yarn en WSL Ubuntu 👉
+  </a>
+</div>

@@ -1,0 +1,52 @@
+---
+title: Instalando VS Code y Conectándolo con WSL Ubuntu
+description: Parte 2 de una serie de artículos que describen mi setup en WSL Ubuntu
+date: 2022-10-22T03:46:14.859Z
+lang: es
+toc: true
+published: true
+tags: setup, wsl, remote, vscode, ubuntu
+---
+
+> _Este post es parte de una serie de artículos que describen paso a paso mi setup personal, puedes ver la lista completa [aquí](/articles/mi-setup-desarrollo-wsl-ubuntu)_
+
+Bueno en este punto instalaremos el `Visual Studio Code` desde la Microsoft Store, luego de tenerlo instalado, inicio sesión a mi `VSCode` con mi cuenta de Github para cargar todas mis configuraciones previas del editor de código.
+
+Pero veamos, para poder trabajar con VSCode, y que este se conecte con nuestro `WSL` aún necesitamos agregarle un plugin.
+
+## Plugin - Remote WSL
+
+Con `Remote WSL` vamos a poder conectarnos desde la terminal del `VSCode` hasta nuestra terminal configurada con `WSL`
+
+Enlace al plugin 👉 [Remote - WSL - Visual Studio Marketplace](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-wsl)
+
+Luego de instalarlo, tenemos que configurarlo en nuestro `VSCode`, así, cada vez que iniciemos el `VSCode`, esta conexión se establecerá por defecto.
+
+1. Buscamos el símbolo de conexión remota de nuestro VSCode y le damos click:
+
+![WSL option](/static/img/articles/instalando-vscode/wsl-option.png)
+
+2. Seleccionamos la opción de `New WSL Window` y con esto cada vez que usemos la terminal del `VSCode` este creara una nuevo terminal levantando el terminal `wsl`.
+
+![New WSL Window](/static/img/articles/instalando-vscode/vscode-selected-option.png)
+
+Y listo!! Eso es todo, ya tenemos `VSCode` configurado con `WSL - Ubuntu` 🎉
+
+---
+
+<div css={{ display: "flex", justifyContent: "space-between" }}>
+  <a
+    href="/articles/instalando-configurando-wsl-ubuntu"
+    target="_self"
+    css={{ display: "block", color: "#004BCC", textDecoration: "underline" }}
+  >
+    👈 Instalando y configurando WSL
+  </a>
+  <a
+    href="/articles/instalando-configurando-git-wsl-ubuntu"
+    target="_self"
+    css={{ display: "block", color: "#004BCC", textDecoration: "underline" }}
+  >
+    Instalando y configurando git en WSL Ubuntu 👉
+  </a>
+</div>
