@@ -1,0 +1,152 @@
+---
+title: Instalando & configurando git en WSL Ubuntu
+description: Parte 3 de una serie de artículos que describen mi setup en WSL Ubuntu
+date: 2022-10-23T03:46:14.859Z
+lang: es
+toc: true
+published: true
+tags: setup, git, wsl, ubuntu, ssh
+---
+
+> _Este post es parte de una serie de artículos que describen paso a paso mi setup personal, puedes ver la lista completa [aquí](/articles/mi-setup-desarrollo-wsl-ubuntu)_
+
+Para este punto ya tenemos instalado `WSL` en nuestra computador corriendo en `Windows Terminal` con el shell de `zsh` por defecto.
+
+## Instalando git
+
+Entonces abrimos nuestro `Windows Terminal` y vamos a iniciar nuestra configuración de `git`, asi que empezaremos con su comando de instalación.
+
+```bash
+$ sudo apt install git
+```
+
+Una vez finalice la actualización agregaremos algunas configuraciones iniciales para no tener que hacerlo cada vez que usamos `git` en la terminal, los comandos son los siguientes:
+
+```bash
+$ git config --global user.name "your-username github"
+$ git config --global user.email "your-email github"
+$ git config --global core.autocrlf input
+$ git config --global core.safecrlf true
+$ git config --global init.defaultBranch main
+```
+
+Para confirmar que todas nuestras configuraciones están ok! ejecutamos el siguiente comando en la terminal:
+
+```bash
+$ git config --list
+```
+
+Esto nos listara las configuraciones que hicimos previamente, si lo tenemos hasta aquí, es porque nuestro `git` ya tiene agregadas esas configuraciones.
+
+## Configurando SSH
+
+Yo suelo conectarme a los servicios de alojamiento de código desde mi computador personal, y para eso, es necesario tener una llave, una llave que le diga al servicio de alojamiento de código, que la persona que esta solicitando el código soy yo, bueno, mi computador personal, entonces vamos a crear ese identificador.
+
+Primero, vamos a tratar de ubicarnos en el directorio `.ssh` con el siguiente comando dentro de nuestra terminal `wsl`
+
+```bash
+$ cd ~/.ssh
+```
+
+Si te sale un mensaje como `cd: No such file or directory` es porque, probablemente no tenemos el directorio `.ssh` creado, pero no pasa nada, cuando generamos nuestra `keygen` (la llave), este se encargara de crear el directorio, y dentro de él, agregará unas llaves públicas y privadas, veamos:
+
+```bash
+$ ssh-keygen -o
+```
+
+Esto nos retornara un mensaje en la terminal, con algunos inputs para rellenarlo con nuestros datos, como una frase segura por ejemplo, en este punto debemos de tener extremo cuidado de no perder esa frase segura en caso decidas poner alguna frase, porque… usualmente yo dejo todos los datos por default, dándole `enter` a cada paso, y sin llenar nada. 😜
+
+```bash
+Generating public/private rsa key pair.
+Enter file in which to save the key (/home/paulotijero/.ssh/id_rsa):
+Created directory '/home/paulotijero/.ssh'.
+Enter passphrase (empty for no passphrase):
+Enter same passphrase again:
+Your identification has been saved in /home/paulotijero/.ssh/id_rsa
+Your public key has been saved in /home/paulotijero/.ssh/id_rsa.pub
+The key fingerprint is:
+SHA256: ....
+The key's randomart image is:
++---[RSA 3072]----+
+|    ......       |
++----[SHA256]-----+
+```
+
+De todos los archivos que generó, el que nos importa realmente es el archivo `id_rsa.pub`.
+
+Genial, ahora si nos moveremos a la carpeta `.ssh`, que fue donde se generaron las llaves:
+
+```bash
+$ cd ~/.ssh
+```
+
+Necesitaremos copiar nuestra llave generada para llevarlo a `github` (servicio de alojamiento de código) en mi caso.
+
+Y para eso estamos en la carpeta `.ssh`, porque abriremos el archivo `id_rsa.pub` con el siguiente comando:
+
+```bash
+$ cat id_rsa.pub
+```
+
+y seleccionamos todo lo que nos muestre en la terminal, y lo copiamos para luego agregar esta llave pública a nuestra cuenta de `github`.
+
+## Agregando una llave a Github
+
+Nos vamos a nuestra configuraciones de `github`
+
+![Github Settings](/static/img/articles/instalando-configurando-git/github-settings.png)
+
+Luego elegimos la opción de `SSH and GPS keys`, y nos vamos a la opción de crear un `New SSH key`.
+
+![Github Settings - SSH and GPG keys](/static/img/articles/instalando-configurando-git/github-ssh-gpg-keys.png)
+
+Una vez dentro ponemos un título a nuestra llave `SSH` y pegamos en el último campo todo lo que copiamos desde la terminal.
+
+![Github Settings - SSH keys add new](/static/img/articles/instalando-configurando-git/github-ssh-add.png)
+
+Y listo, le damos a `Add SSH key`, y en la siguiente vista deberíamos tener algo como esto:
+
+![Github Settings - SSH keys - results](/static/img/articles/instalando-configurando-git/github-ssh-result.png)
+
+Y con esto ya tenemos agregado nuestro `SSH` en `github`, para asegurarnos que todo este bien, vamos a ejecutar el siguiente comando en nuestra terminal:
+
+```bash
+$ ssh -T git@github.com
+```
+
+Nos saldrá un mensaje en la terminal muy parecido a lo siguiente:
+
+```bash
+The authenticity of host 'github.com (140.82.114.4)' can't be established.
+ECDSA key fingerprint is SHA256:p2QAMXNIC1TJYWeIOttrVc98/R1BUFWu3/LiyKgUfQM.
+Are you sure you want to continue connecting (yes/no/[fingerprint])?
+```
+
+El cual aceptamos escribiendo `yes` y presionando enter.
+
+Luego nos retornara un mensaje diciendo que la autenticación funciono, pero que `github` aun no retorna nada, eso es bueno, porque `github` reconoció nuestra PC.
+
+```bash
+Hi <user-name>! You've successfully authenticated, but GitHub does not provide shell access.
+```
+
+Y listo!! Eso es todo, ya tenemos `git` configurado en `WSL - Ubuntu` 🎉
+
+---
+
+<div css={{ display: "flex", justifyContent: "space-between" }}>
+  <a
+    href="/articles/instalando-vscode-wsl-ubuntu"
+    target="_self"
+    css={{ display: "block", color: "#004BCC", textDecoration: "underline" }}
+  >
+    👈 Instalando VS Code y Conectándolo con WSL Ubuntu
+  </a>
+  <a
+    href="/articles/instalando-postgresql-wsl-ubuntu"
+    target="_self"
+    css={{ display: "block", color: "#004BCC", textDecoration: "underline" }}
+  >
+    Instalando PostgreSQL en WSL Ubuntu 👉
+  </a>
+</div>

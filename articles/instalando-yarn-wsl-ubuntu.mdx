@@ -1,0 +1,46 @@
+---
+title: Instalando yarn en WSL Ubuntu
+description: Parte 7 de una serie de artículos que describen mi setup en WSL Ubuntu
+date: 2022-10-28T03:46:14.859Z
+lang: es
+toc: true
+published: true
+tags: setup, wsl, terminal, ubuntu
+---
+
+> _Este post es parte de una serie de artículos que describen paso a paso mi setup personal, puedes ver la lista completa [aquí](/articles/mi-setup-desarrollo-wsl-ubuntu)_
+
+`Node` trae por defecto un manejador de paquetes llamado `npm` , este nos ayuda a instalar/actualizar módulos `npm`.
+
+Pero nosotros usaremos `yarn`, existen algunas diferencias entre `npm` y `yarn` que hacen tener la sensación de que `yarn` es más veloz que `npm` cuando instalamos paquetes, no abordaremos esas diferencias en este artículo, pero dejo un enlaces donde comentan ampliamente esas diferencias.
+
+[Yarn vs NPM: Which Package Manager is Best to Choose?](https://www.knowledgehut.com/blog/web-development/yarn-vs-npm)
+
+Entonces para instalarlo, nos apoyaremos de `npm`, y lo instalaremos en nuestro entorno global usando el flag `--global` como se muestra en el siguiente comando:
+
+```bash
+$ npm install --global yarn
+```
+
+Y con eso ya tendríamos instalado `yarn` en nuestro `wsl - Ubuntu`, para probar si todo esta ok, no olvidemos preguntar siempre por su versión, sin antes reiniciar la terminal (técnica milenaria)
+
+```bash
+$ yarn --version
+
+1.22.19
+```
+
+Y listo! ya tiene instalado `yarn` en `WSL - Ubuntu` 🎉
+
+---
+
+<div css={{ display: "flex", justifyContent: "space-between" }}>
+  <a
+    href="/articles/instalando-nodejs-wsl-ubuntu"
+    target="_self"
+    css={{ display: "block", color: "#004BCC", textDecoration: "underline" }}
+  >
+    👈 Instalando y configurando NodeJS en WSL Ubuntu
+  </a>
+  <span css={{ display: "block" }}></span>
+</div>

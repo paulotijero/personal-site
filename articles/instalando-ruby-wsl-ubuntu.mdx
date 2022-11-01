@@ -1,0 +1,153 @@
+---
+title: Instalando de Ruby en WSL Ubuntu
+description: Parte 5 de una serie de artículos que describen mi setup en WSL Ubuntu
+date: 2022-10-26T03:46:14.859Z
+lang: es
+toc: true
+published: true
+tags: setup, ruby, wsl, ubuntu, rbenv
+---
+
+> _Este post es parte de una serie de artículos que describen paso a paso mi setup personal, puedes ver la lista completa [aquí](/articles/mi-setup-desarrollo-wsl-ubuntu)_
+
+Ahora nos toca instalar `ruby`, pero en algún momento necesitaremos movernos entre versiones, para que esa labor sea sencilla de realizar, voy a instalar un manejador de versiones de `ruby`, en el mercado existen algunos:
+
+- [rbenv](https://github.com/rbenv/rbenv)
+- [chruby](https://github.com/postmodern/chruby)
+- [rvm](https://github.com/rvm/rvm)
+
+A mi personalmente me gusta `rbenv` por algunos argumentos que ponen en este artículo:
+
+[Manejadores de versiones para Ruby](https://blog.makeitreal.camp/manejadores-de-versiones-en-ruby/)
+
+Así que, vamos a instalarlo ejecutando el siguiente comando en nuestra terminal.
+
+```bash
+$ sudo apt install rbenv
+```
+
+luego ejecutamos un `rbenv init` para constatar que se este iniciando correctamente en nuestra terminal y debería mostrarnos algo como esto:
+
+```bash
+# Load rbenv automatically by appending
+# the following to ~/.zshrc:
+
+eval "$(rbenv init -)"
+```
+
+El `~/.zshr` es la ruta donde se encuentra la hoja de configuraciones de nuestro `zsh` [(el shell que instalamos previamente)](/articles/instalando-configurando-wsl-ubuntu).
+
+Entonces, tendremos que agregar el comando que nos recomendó `rbenv`, para eso será necesario abrirlo con un editor de texto, yo usare `nano`, que es un editor de texto de la terminal, para poder abrir el archivo y adicionar el comando `eval`
+
+```bash
+$ nano ~/.zshrc
+```
+
+Y nos vamos hasta el final del archivo para agregar la sugerencia de `rbenv`
+
+![zshrc config](/static/img/articles/instalacion-ruby/zshrc-eval.png)
+
+Luego salimos de la terminal con `CTRL + X` y nos preguntara si queremos guardar los cambios, para eso escribimos `Y` y luego `Enter`, esto nos pondrá de vuelta en nuestra terminal, ahora, tendremos que ejecutar el comando `source` sobre la ruta del archivo modificado, para registrar los cambios:
+
+```bash
+$ source ~/.zshrc
+```
+
+Y por si las dudas, usaremos la técnica milenaria de cerrar la terminal y volverlo ha abrir, para que estos cambios surtan efecto.
+
+Luego para ver que todo este bien con nuestra instalación de `rbenv` ejecutaremos el comando `rbenv-doctor`, que es un script que escanea nuestro sistema para ver que la instalación de `rbenv` esta correcta, para eso ejecutamos el siguiente comando:
+
+```bash
+$ curl -fsSL https://github.com/rbenv/rbenv-installer/raw/main/bin/rbenv-doctor | bash
+```
+
+Y tendremos un diagnóstico:
+
+![zshrc config](/static/img/articles/instalacion-ruby/rbenv-doctor.png)
+
+En nuestro caso tenemos un mensaje de error, sugiriendo que si a vamos a querer instalar varias versiones de ` ruby` tendremos que instalar manualmente el `ruby-build`, que es un plugin de `rbenv`.
+
+Entonces es un problema del `ruby-build` , si bien en la documentación mencionan que `ruby-build` viene por defecto instalado, puede que aveces esto no suceda (como en nuestro caso), para solucionarlo tendremos que instalarlo manualmente, como vemos en su documentación.
+
+[GitHub - rbenv/ruby-build: Compile and install Ruby](https://github.com/rbenv/ruby-build#readme)
+
+En nuestro caso, `rbenv` no creo la carpeta `plugins` entonces para eso, primero crearemos la carpeta `plugins` y dentro de él vamos a clonar el plugin, con los siguientes comandos:
+
+```bash
+$ mkdir -p "$(rbenv root)"/plugins
+$ git clone https://github.com/rbenv/ruby-build.git "$(rbenv root)"/plugins/ruby-build
+```
+
+Después de instalarlo, debemos de ejecutar de nuevo el `rbenv-doctor` y todo debería estar funcionando en este punto.
+
+```bash
+$ curl -fsSL https://github.com/rbenv/rbenv-installer/raw/main/bin/rbenv-doctor | bash
+```
+
+![zshrc config](/static/img/articles/instalacion-ruby/rbenv-doctor-2.png)
+
+Una vez que pasamos la revisión de `rbenv-doctor` vamos a instalar la versión que necesitemos y cargarlo como versión global del sistema.
+
+```bash
+$ rbenv install 3.1.0
+$ rbenv global 3.1.0
+```
+
+Y listo! solo tenemos que cerrar la terminal y abrir una nueva (técnica milenaria), para comprobar que tenemos la versión correcta de ruby en nuestro entorno global, ejecutamos el siguiente comando:
+
+```bash
+$ ruby --version
+ruby 3.1.0p0 (2021-12-25 revision fb4df44d16) [x86_64-linux]
+```
+
+Y con esto ya podríamos ejecutar `irb` (interprete interactivo de ruby), para eso usamos el siguiente comando:
+
+```bash
+$ irb
+irb(main):001:0>
+```
+
+## Trabajando con Gemas
+
+Las gemas son la forma en que se distribuyen paquetes de código en `Ruby`, usaremos el comando `gem` para instalar gemas de `ruby`, este comando se agrega a nuestro terminal justo después de instalar ruby.
+
+Con esto instalaremos `bunndler`, que es una herramienta que gestiona las dependencias de nuestras gemas, que usaremos en nuestros futuros proyectos.
+
+```bash
+$ gem install bundler
+```
+
+Y finalmente instalamos `rails` para que podamos crear proyectos con este framework más adelante.
+
+```bash
+$ gem install rails
+```
+
+El comando anterior instala la versión mas reciente de `rails`. Si quisiéramos instalar un versión específica, tenemos que usar el siguiente comando:
+
+```bash
+$ gem install rails -v 4.2.7
+```
+
+Es posible que te topes con un error al levantar tu primero proyecto en `rails`, este error esta relacionado a la gema que usa `rails` para conectarse a `PostgreSQL`, puedes ver como solucionarlo [aquí](/articles/instalando-libq-dev)
+
+Y listo, ya tenemos configurado `Ruby` y `Ruby on Rails` en `WSL - Ubuntu` 🎉
+
+---
+
+<div css={{ display: "flex", justifyContent: "space-between" }}>
+  <a
+    href="/articles/instalando-postgresql-wsl-ubuntu"
+    target="_self"
+    css={{ display: "block", color: "#004BCC", textDecoration: "underline" }}
+  >
+    👈 Instalando PostgreSQL en WSL Ubuntu
+  </a>
+  <a
+    href="/articles/instalando-nodejs-wsl-ubuntu"
+    target="_self"
+    css={{ display: "block", color: "#004BCC", textDecoration: "underline" }}
+  >
+    Instalando y configurando NodeJS en WSL Ubuntu 👉
+  </a>
+</div>

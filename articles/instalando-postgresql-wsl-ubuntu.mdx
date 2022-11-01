@@ -1,0 +1,123 @@
+---
+title: Instalando PostgreSQL en WSL Ubuntu
+description: Parte 4 de una serie de artículos que describen mi setup en WSL Ubuntu
+date: 2022-10-25T03:46:14.859Z
+lang: es
+toc: true
+published: true
+tags: setup, postgresql, wsl, ubuntu
+---
+
+> _Este post es parte de una serie de artículos que describen paso a paso mi setup personal, puedes ver la lista completa [aquí](/articles/mi-setup-desarrollo-wsl-ubuntu)_
+
+## Paso 1: Instalación
+
+Primero nos aseguramos de tener todo actualizado en nuestro sistema, para eso ejecutamos los siguientes comandos:
+
+```bash
+$ sudo apt update
+$ sudo apt upgrade
+```
+
+Ahora sí, vamos a instalar `PostgreSQL` junto al paquete `-contrib` que agrega algunas utilidades y funcionalidades extra:
+
+```bash
+$ sudo apt install postgresql postgresql-contrib
+```
+
+Después del proceso de instalación, cada vez que quisiéramos interactuar con el servicio de `PostgreSQL` se tendrá que levantar el servidor de la base de datos, para hacerlo usaremos el siguiente comando:
+
+```bash
+$ sudo service postgresql start
+* Starting PostgreSQL 12 database server                                   [ OK ]
+```
+
+Recuerda que, siempre que inicie de nuevo su sistema, tiene que levantar el servicio de `PostgreSQL` para poder interactuar con él.
+
+## Paso 2: Usando Roles PostgreSQL y Bases de datos
+
+Por defecto `PostgreSQL` usa el concepto de roles, similar a como se manejan los roles en Unix/Linux, en el proceso de instalación `Postgres` crea una cuenta llamada `postgres` que esta asociada al rol predeterminado por `PostgreSQL` . Y para poder acceder, tenemos que usar esa cuenta, que se creo por defecto.
+
+Esta instalación trae consigo un alias, `psql`, que una vez tenemos levantado el servicio de `postgres` nos ayudara a conectarnos a las bases de datos desde nuestra terminal.
+
+Pero este alias, usa los roles del sistema para ejecutarse, por eso, si ejecutamos el comando `psql` en nuestra terminal, veremos que nos falta crear nuestro usuario.
+
+```bash
+$ psql
+psql: error: FATAL:  role "paulotijero" does not exist
+```
+
+Para solucionar este error, será prudente que configuremos una cuenta personal en el servicio de `PostgreSQL`, para poder crear un usuario con nuestra cuenta de administrador de `Unix/Linux` usaremos un comando con un flag (`--iterative`), esto nos ayudara a crear nuestro usuario y rol de forma interactiva:
+
+```bash
+$ sudo -u postgres createuser --interactive
+```
+
+Nosotros pondremos el mismo nombre de la cuenta que usamos cuando iniciamos `ubuntu` en nuestro `wsl`.
+Seguidamente preguntará si queremos darle permisos de `superusuario`, al que responderemos con un `y`, veamos un ejemplo:
+
+```bash
+$ sudo -u postgres createuser --interactive
+
+Enter name of role to add: paulotijero
+Shall the new role be a superuser? (y/n) y
+```
+
+Ahora, cuando intentemos acceder al servicio de `postgresql` con el alias `psql` nos enviará un mensaje error, parecido al anterior (en estructura), pero diferente (en contenido), diciendo que aún no tenemos creada la base de datos de nuestro usuario, saldrá algo como esto:
+
+```bash
+$ psql
+psql: error: FATAL:  database "paulotijero" does not exist
+```
+
+## Paso 3: Creando una nueva base de datos
+
+Otra suposición que hace `PostgreSQL`, es que cuando intentemos conectarnos al servicio, buscará una base de datos con el mismo nombre de tu usuario para conectarse.
+
+Obviamente hace un momento solo creamos el usuario/rol, y lo asignamos por default, pero aún no creamos su base de datos, así que, usaremos el siguiente comando para crearlo:
+
+```bash
+$ sudo -u postgres createdb paulotijero
+```
+
+Con esto resuelto, ahora ya podremos conectarnos directamente a nuestro servicio con el alias `psql` pero antes de eso, tendríamos que darle los permisos la primera vez que nos conectemos, para poder editar las tablas dentro de nuestra linea de comandos `sql`:
+
+```bash
+$ sudo -i -u paulotijero psql
+
+psql (12.12 (Ubuntu 12.12-0ubuntu0.20.04.1))
+Type "help" for help.
+```
+
+Una vez dentro del terminal de `psql`, podremos interactuar con todas nuestras bases de datos, podrás encontrar más comandos [aquí](https://www.geeksforgeeks.org/postgresql-psql-commands/).
+
+Para salirnos usamos `exit` o `\q` , ahora que ya lo tenemos completamente configurado para que cada vez que usemos el alias `psql` nos conecte a nuestro user, con poderes de super admin.
+
+```bash
+$ psql
+psql (12.12 (Ubuntu 12.12-0ubuntu0.20.04.1))
+Type "help" for help.
+
+paulotijero=#
+```
+
+Y listo, ya tenemos configurado `PostgreSQL` como su gestor de base de datos en `WSL - Ubuntu` 🎉
+
+---
+
+<div css={{ display: "flex", justifyContent: "space-between" }}>
+  <a
+    href="/articles/instalando-configurando-git-wsl-ubuntu"
+    target="_self"
+    css={{ display: "block", color: "#004BCC", textDecoration: "underline" }}
+  >
+    👈 Instalando y configurando git en WSL Ubuntu
+  </a>
+  <a
+    href="/articles/instalando-ruby-wsl-ubuntu"
+    target="_self"
+    css={{ display: "block", color: "#004BCC", textDecoration: "underline" }}
+  >
+    Instalando Ruby en WSL Ubuntu 👉
+  </a>
+</div>

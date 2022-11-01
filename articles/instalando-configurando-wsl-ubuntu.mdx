@@ -1,0 +1,83 @@
+---
+title: Instalando & configurando WSL Ubuntu
+description: Parte 1 de una serie de artículos que describen mi setup en WSL Ubuntu
+date: 2022-10-21T03:46:14.859Z
+lang: es
+toc: true
+published: true
+tags: setup, wsl, terminal, ubuntu
+---
+
+> _Este post es parte de una serie de artículos que describen paso a paso mi setup personal, puedes ver la lista completa [aquí](/articles/mi-setup-desarrollo-wsl-ubuntu)_
+
+## Instalando WSL Ubuntu
+
+Primero abrimos `PowerShell` he instalamos ubuntu, con el siguiente comando:
+
+```bash
+wsl --install -d Ubuntu
+```
+
+Al finalizar el proceso de instalación pedirá que configures un usuario y contraseña, esto es importante, porque Linux usara esas credenciales para crear tu carpeta de inicio y para que te autentiques cada vez que actualices el sistema (como si de una PC con Linux se tratase).
+
+Una vez que lo tenemos instalado, vamos a entrar a la terminal wsl con ubuntu para actualizar el sistema con estos ambos comandos.
+
+```bash
+$ sudo apt update
+$ sudo apt upgrade
+```
+
+## Instalando Windows Terminal
+
+Después de que termine de actualizarse, instalamos `Windows terminal` desde la Microsoft Store, esta terminal, esta en una fase muy madura, y nos ayudara a interactuar con nuestra terminal `WSL`
+
+![Windows Terminal](/static/img/articles/instalando-configurando-wsl/windows-terminal.png)
+
+Una vez que tenemos nuestro `Windows Terminal` instalado, lo vamos a iniciar y este se levantara con la terminal de `Windows PowerShell` por defecto.
+
+Nosotros le diremos que use Ubuntu, y para eso nos vamos al `tab-menu` y seleccionamos la opción de `Settings`.
+
+![Windows Terminal](/static/img/articles/instalando-configurando-wsl/power-shell.png)
+
+Estando ya en `Settings`, buscaremos la sección `Startup` y en la opción de `Default profile` seleccionaremos al pingüino ⇒ `Ubuntu`.
+
+![Windows Terminal](/static/img/articles/instalando-configurando-wsl/terminal-config.png)
+
+## Instalando zsh
+
+Luego, nos vamos a instalar el shell de `zsh` y su plugin `ohmyzsh` , esto agregara un template para nuestro terminal y también trae consigo algunas configuraciones. [(ver más)](https://github.com/ohmyzsh/ohmyzsh/wiki/Installing-ZSH).
+
+```bash
+$ sudo apt install zsh
+```
+
+Cuando termina la instalación de `zsh` instalaremos `ohmyzsh` con el siguiente comando:
+
+```bash
+$ sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+```
+
+Y cuando nos pregunten si queremos usar el shell de `zsh` por default respondemos con `Y` en la terminal.
+
+![Windows Terminal](/static/img/articles/instalando-configurando-wsl/zsh-shell-config.png)
+
+Perfecto! hasta este punto ya tenemos nuestra terminal instalada y funcionando con `WSL - Ubuntu` como si de una PC con Linux se tratase.
+
+---
+
+<div css={{ display: "flex", justifyContent: "space-between" }}>
+  <a
+    href="/articles/mi-setup-desarrollo-wsl-ubuntu"
+    target="_self"
+    css={{ display: "block", color: "#004BCC", textDecoration: "underline" }}
+  >
+    👈 Setup con Windows Subsystem Linux (WSL)
+  </a>
+  <a
+    href="/articles/instalando-vscode-wsl-ubuntu"
+    target="_self"
+    css={{ display: "block", color: "#004BCC", textDecoration: "underline" }}
+  >
+    Instalando VS Code y Conectándolo con WSL Ubuntu 👉
+  </a>
+</div>
