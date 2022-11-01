@@ -33,6 +33,6 @@
     "contentz": "^3.14.1"
   },
   "devDependencies": {
-    "serve": "^14.0.2"
+    "serve": "^10"
   }
 }
