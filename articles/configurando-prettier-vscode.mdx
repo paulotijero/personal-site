@@ -1,0 +1,38 @@
+---
+title: Instalando Plugin Prettier en el VSCode
+description: Ahora podremos ejecutar prettier cada vez que guardamos un archivo.
+date: 2022-11-05T15:38:32.036Z
+lang: es
+toc: true
+published: true
+tags: prettier, vscode, plugin
+---
+
+_Previamente a este artículo, [instalamos prettier en un proyecto javascript](/articles/instalando-prettier-para-js), para poder ejecutarlo en todos nuestros archivos._
+
+En este artículo abordaremos la instalación del `Plugin de Prettier` en `VSCode` y lo configuraremos para que cada vez que demos guardar un archivo, este ejecute `prettier`.
+
+## Instalando el Plugin Prettier en VSCode
+
+Este paso es sencillo, tendríamos que ir hacia la opción de instalación de extensiones del VSCode (cuadrado amarillo), he instalar `Prettier - Code Formatter` (cuadrado rojo)
+
+![VSCode install prettier](/static/img/articles/instalando-prettier-vscode/vscode-install-prettier.png)
+
+O pueden visitar directamente este enlace:
+
+- [Market Place VSCode - Prettier Code Formatter](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode)
+
+Al dar click en `install`, los va a redireccionar hacia el VSCode de su computador.
+
+## Configuración para ejecutar Prettier
+
+Ahora configuraremos el `Plugin`, para que se ejecute cada vez que guardemos un archivo.
+
+Para eso tendremos que ir hacia las configuraciones siguiendo estos pasos:
+
+1. Ve hacia: `File - Preferences - Settings`
+2. Click en: `Text Editor - Formatting`
+3. Selecciona: `Format on Save`
+4. Reiniciamos el VSCode para que los cambios tengan efecto: `Ctrl + Shift + P` y escribimos `> reload window` y damos `enter` para reiniciar el VSCode.
+
+Listo, ahora con esta configuración cada vez que guardes un archivo, se ejecutara `prettier`.

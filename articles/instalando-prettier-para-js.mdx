@@ -1,0 +1,80 @@
+---
+title: Instalando prettier para proyectos Javascript
+description: Solucionando el debate de los estilos JS
+date: 2022-11-05T14:25:56.825Z
+lang: es
+toc: true
+published: true
+tags: javascript, js, prettier, vscode
+---
+
+Hace poco, en nuestro equipo de desarrollo, nos dimos cuenta que cuando dábamos `code reviews`, las discusiones se volvían improductivas, porque se levantaban algunos `toc's` personales respecto al estilo, por ejemplo:
+
+- Debemos de usar `;` después de cada linea en Javascript, o no?
+- Esta linea de código es muy extensa, podrías dividirla y desplazarla hacia una linea inferior?
+
+Como ven, es valioso tener discusiones sobre el estándar de estilos de código, pero, ¿Es necesario darles un alto nivel de importancia?, después de levantarse esas observaciones de estilo, aveces se rompían cosas, o incluso se perdía de vista lo mas importante.
+
+En nuestra búsqueda de eliminar las discusiones sobre el estilo de desarrollo, nos topamos con `Prettier`.
+Pero, ¿Qué es `Prettier`?, Según su [pagina web](https://prettier.io/):
+
+- An opinionated code formatter
+- Supports many languages
+- Integrates with most editors
+
+Esto resolvería nuestros problemas de estilo, delegando toda esa responsabilidad a `Prettier`.
+
+## Instalando Prettier
+
+Nuestro proyecto esta escrito sobre `NextJS`, pero puede seguir este mismo proceso de instalación sobre cualquier proyecto `javascript` que tenga un `package.json` configurado.
+
+> _Nosotros particularmente usamos `yarn`, puedes seguir esta guía de [instalación de `yarn`](/articles/instalando-yarn-wsl-ubuntu) si aún no lo tienes instalado._
+
+Vale, para instalarlo tenemos que posicionarnos en el directorio raíz de nuestro proyecto y usar el siguiente comando:
+
+```bash
+yarn add --dev --exact prettier
+```
+
+Esto agregar `prettier` en el `package.json` en su sección `devDependencies`.
+
+## Formateando todos los archivos con Prettier
+
+Ahora, ¿Cómo ejecutamos Prettier en todos nuestros archivos?; Para lograrlo, existen 2 estrategias/formas/escenarios:
+
+### Primera
+
+Podríamos ejecutar `prettier` desde nuestra terminal estando en la raíz del proyecto usando el siguiente commando:
+
+```bash
+yarn prettier --write .
+```
+
+Este comando esta llamando a `prettier` para que evalué y sobrescriba (`--write`) todos los archivos desde donde estoy ejecutándolo (`.` - el punto representa esto último).
+
+Pero en este escenario, todos los desarrolladores del equipo, cada vez que escriban código, tendrían que recordar el comando de ejecución de `prettier --write .`
+
+### Segunda
+
+Entonces en esta segunda estrategia podríamos crear un `script` que nos permita de manera más fácil llamar a `prettier`.
+
+Para lograrlo tenemos que ir hasta nuestro `package.json` y en el apartado de `scripts` agregaremos un `script` que llame a `prettier`
+
+```json
+"scripts": {
+    ...
+    "pretty": "prettier --write \"./**/*.{js,jsx,json}\""
+  },
+```
+
+Este comando tiene la misma estructura que el anterior, solo que ahora estamos especificando que deberá evaluar archivos `js`, `jsx` y `json`.
+
+Para ejecutar este comando, solo tendríamos que llamar al `script` desde la raíz del proyecto.
+
+```bash
+yarn pretty
+```
+
+Y listo! ya tenemos todos nuestros archivos formateados gracias a `prettier`.
+
+Pero, ambas estrategias propuestas no reducen la probabilidad de que alguien en el equipo se olvide de ejecutar `prettier` antes de subir sus cambios, para reducir esa incertidumbre, instalaremos el [Plugin de Prettier para VSCode](/articles/configurando-prettier-vscode)
