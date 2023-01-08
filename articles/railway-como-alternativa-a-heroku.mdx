@@ -1,0 +1,56 @@
+---
+title: Y si usamos Railway como alternativa a Heroku?
+description: ¿Estás considerando usar Railway como alternativa a Heroku pero no sabes cuál es la mejor opción? En este artículo, usaremos Railway
+date: 2023-01-05T17:29:06.879Z
+lang: es
+published: true
+tags: Railway, Heroku, React, Rails, Postgres
+---
+
+> _**Descargo de responsabilidad**: Para escribir este artículo se hizo una búsqueda documentaría sobre ventajas y desventajas de los opciones actuales en la web, por lo que no se ha probado exhaustivamente todas esas opciones, esto representa una opinión de un servicio desconociendo a profundidad los otros disponibles. No dude en contactarse conmigo si considera que otro servicio es mejor al que decidí usar._
+
+Eso nos preguntamos cuando nos enteramos en **SEAD** _(un MVP en proceso de incubación)_ que pronto `Heroku` dejaría atrás sus opciones de servicio gratuitas/libres llamadas "Free Dynos" y que todo esto sucedería un [28 de noviembre del 2022](https://devcenter.heroku.com/changelog-items/2461), fecha en que el servicio gratuito estaba dejando de serlo.
+
+Previas a esas fechas nos topamos con una oleada de opciones como:
+
+- [Railway](https://railway.app/)
+- [render](https://render.com/)
+- [Fly](https://fly.io/)
+- [etc etc ...](https://www.google.com/search?q=alternativas+a+heroku)
+
+Y meses antes ya estábamos enganchados con las noticias de `Heroku` y `Github` con el conflicto de seguridad entre los servicios:
+
+- [Blog de Github explicando el problema](https://github.blog/2022-04-15-security-alert-stolen-oauth-user-tokens/)
+- [@midudev dando contexto](https://www.youtube.com/watch?v=QT-stlSAi0U)
+
+Después de documentarnos en ventajas y desventajas de las alternativas a `Heroku` nos inclinemos por usar `Railway`, una alternativa más económica respecto a las otras opciones disponibles.
+
+`Railway` entrega 5 dólares mensuales de crédito para ser usados en su servicio y para un MVP son suficientes, adicionalmente los servidores nunca entran en estado de reposo como lo hacía `Heroku`, así que no tendremos tiempos de espera en la primera carga <small>_(ojalá los 5 dólares de crédito duren todo el mes 🤞)_</small>
+
+También vimos que podríamos desplegar todo lo que necesitábamos en un solo lugar, esto aportaba a la idea de tener un único servicio en el que podamos desplegar toda la infraestructura de **SEAD**:
+
+- Postgres
+- Rails Api
+- React
+
+Que pueda ser fácil de mantener por una sola persona y que pueda escalar a medida que el proyecto va creciendo.
+
+**¿Que debes esperar de esta serie de artículos?**
+
+Bueno, me pondré manos a la obra he iré compartiendo con ustedes mi proceso de despliegue, mantenimiento, optimización y mejoras de uso del servicio con la intención de documentar todo el proceso.
+
+Por lo que, siéntase libre de guardar este artículo, que es donde estaré agregando los enlaces a los futuros temas relacionados a `Railway`, para que pueda consultarlo.
+
+Esta es el roadmap de los artículos relacionados a `Railway`:
+
+- [Desplegando una aplicación Rails Api en Railway ***(in progress)***]
+
+- [Conectando Postgres a una aplicación Rails en Railway ***(ToDo)***]
+
+- [Desplegando una aplicación React en Railway ***(ToDo)***]
+
+---
+
+Si estás trabajando con `railway` y tienes alguna duda o tema en particular que te gustaría que abordara en un artículo, no dudes en contactarme. Me encantaría recibir sugerencias de temas que te gustaría que escriba sobre `railway`.
+
+Si aún no tienes una cuenta en `railway`, únete a través de mi [link de referencia](https://railway.app?referralCode=4_VY9a), si me ayudas registrándote con mi link, me comprometo a seguir escribiendo sobre `railway` y compartiendo consejos y trucos para sacar el mayor provecho de la plataforma.
