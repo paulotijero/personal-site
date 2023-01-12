@@ -1,0 +1,125 @@
+---
+title: Desplegando una aplicación Rails Api en Railway
+description: Mostraré los pasos necesarios para configurar el servidor y hacer que la aplicación esté disponible para su uso en producción.
+date: 2023-01-12T16:29:27.082Z
+lang: es
+published: true
+tags: Railway, Rails, API, Github
+---
+
+## 1. Asegúrese de tener una cuenta en Railway
+
+Para empezar es necesario tener un cuenta, para hacerlo solo necesitas acceder a este [enlace](https://railway.app?referralCode=4_VY9a) e iniciar session con tu cuenta de `Github`.
+
+![](/static/img/articles/deploying-rails-api-railway/login-railway.JPG)
+
+La integración con Github será beneficiosa para nosotros, ya que facilitará el proceso de despliegue
+
+## 2. Crear un Proyecto en Railway
+
+Una vez que iniciemos sesión, nos redirigirá hacia el dashboard de Railway, donde tendremos que crear un nuevo proyecto:
+
+![](/static/img/articles/deploying-rails-api-railway/now-project-railway.jpg)
+
+Nos mostrará una lista de opciones, nosotros elegiremos la opción de `Deploy from Github repo`
+
+![](/static/img/articles/deploying-rails-api-railway/deploy-from-github-repo.jpg)
+
+Railway aún no sabe con que repositorio nos vamos a conectar, por eso seleccionamos la opción de `Configure GitHub App`.
+
+![](/static/img/articles/deploying-rails-api-railway/configure-github-app.jpg)
+
+Esto nos llevara hacia Github para darle permisos a Railway de lectura de la lista de proyectos que quisiéramos desplegar en Railway.
+
+![](/static/img/articles/deploying-rails-api-railway/permissions-for-github.jpg)
+
+En mi caso, solo dare permiso a un repositorio llamado `rails-api` y guardare los cambios.
+Luego me va a redireccionar a Railway listando el proyecto que quiero desplegar y lo seleccionamos.
+
+![](/static/img/articles/deploying-rails-api-railway/project-to-deploy.jpg)
+
+Luego de seleccionarla tendremos la opción de desplegar la aplicación o de agregar variables de entorno, nosotros por ahora vamos a seleccionar la opción de desplegar la aplicación.
+
+![](/static/img/articles/deploying-rails-api-railway/add-variables.jpg)
+
+Y nuestra aplicación empezara a el proceso de despliegue:
+
+![](/static/img/articles/deploying-rails-api-railway/deploying.jpg)
+
+## 3. Agregando variables de entorno.
+
+Para que la aplicación despliegue con éxito sera necesario agregar algunas variables de entorno, vamos a ir construyendo un archivo `JSON` en el cual iremos agregando las variables de entorno que necesitaremos y cuando lo tengamos listo lo llevaremos a railway.
+
+Si esta usando `credentials` <small>(viene por defecto desde Rails 6)</small> para configurar sus variables de entorno, sera necesario que agregue su `master.key` en railway. Este archivo solo lo tiene el que inicio el proyecto, este archivo por defecto esta agregado al .gitignore <small>(⚠ este archivo nunca debe subirse a github)</small>, y se encuentra en la ruta `name-project/config/master.key` y contenido lo vamos a agregar al key => `RAILS_MASTER_KEY`:
+
+```json
+{
+  "RAILS_MASTER_KEY": "sdf56r2e...."
+}
+```
+
+Luego también necesitaremos del `SECRET_KEY_BASE`, esta es una variable de entorno que se encuentra dentro de los `credentials` y se agrega por defecto en nuestro proyecto. Para saber cual es su valor tenemos que escribir ejecutar el comando `EDITOR='code --wait' rails credentials:edit` desde la raíz de nuestro proyecto, el comando abrirá un vista temporal de edición de credenciales:
+
+![](/static/img/articles/deploying-rails-api-railway/secret-key-base.JPG)
+
+Y copiamos el valor de `secret_key_base` y lo agregamos al JSON.
+
+```json
+{
+  "RAILS_MASTER_KEY": "sdf56r2e....",
+  /////
+  "SECRET_KEY_BASE": "631f3b144...."
+  /////
+}
+```
+
+Y por ultimo, agregaremos algunas credenciales necesarias para que Railway las use en producción
+
+```json
+{
+  "RAILS_MASTER_KEY": "sdf56r2e....",
+  "SECRET_KEY_BASE": "631f3b144....",
+  /////
+  "LANG": "en_US.UTF-8",
+  "RACK_ENV": "production",
+  "RAILS_ENV": "production",
+  "RAILS_LOG_TO_STDOUT": "enabled",
+  "RAILS_SERVE_STATIC_FILES": "enabled"
+  /////
+}
+```
+
+_Nota: Si tuviera variables de entorno adicionales, este es el momento para agregarlas_
+
+Y listo, tenemos el `JSON` con nuestras credenciales, ahora lo vamos a llevar hasta Railway. Tenemos que navegar hasta la pestaña `Variables` de nuestra aplicación y seleccionar la opción de `RAW Editor`:
+
+![](/static/img/articles/deploying-rails-api-railway/add-variables.jpg)
+
+Luego elegimos la opción de `JSON`, pegamos nuestras credenciales y guardamos. Al guardar las credenciales se volverá a ejecutar automáticamente un nuevo despliegue.
+
+![](/static/img/articles/deploying-rails-api-railway/re-deploy.jpg)
+
+Y listo! ya tenemos nuestra primera aplicación desplegada en Railway.
+
+---
+
+_Si estás trabajando con `railway` y tienes alguna duda o tema en particular que te gustaría que abordara en un artículo, no dudes en contactarme. Me encantaría recibir sugerencias de temas que te gustaría que escriba sobre `railway`._
+
+_Si aún no tienes una cuenta en `railway`, únete a través de mi [link de referencia](https://railway.app?referralCode=4_VY9a), si me ayudas registrándote con mi link, me comprometo a seguir escribiendo sobre `railway` y compartiendo consejos y trucos para sacar el mayor provecho de la plataforma._
+
+<div css={{ display: "flex", justifyContent: "space-between" }}>
+  <a
+    href="/articles/railway-como-alternativa-a-heroku"
+    target="_self"
+    css={{ display: "block", color: "#004BCC", textDecoration: "underline" }}
+  >
+    👈 Y si usamos Railway como alternativa a Heroku?
+  </a>
+  <a
+    href="#"
+    target="_self"
+    css={{ display: "block", color: "#004BCC", textDecoration: "underline" }}
+  >
+    Conectando Postgres a una aplicación Rails en Railway (in progress) 👉
+  </a>
+</div>
